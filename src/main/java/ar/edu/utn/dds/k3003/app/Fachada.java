@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class Fachada implements FachadaProcesadorPdI {
-
+    @SuppressWarnings("unused");
     private FachadaSolicitudes fachadaSolicitudes;
 
     @Getter private PdIRepository pdiRepository;
@@ -44,9 +44,9 @@ public class Fachada implements FachadaProcesadorPdI {
 /*        if (!fachadaSolicitudes.estaActivo(pdiDTORecibido.hechoId())) {
             throw new IllegalStateException("El hecho está inactivo o fue borrado");
         }*/
-
+        System.out.println("LLEGAMOS 1");
         PdI nuevoPdI = recibirPdIDTO(pdiDTORecibido);
-
+        System.out.println("LLEGAMOS 2");
         // Buscar duplicado a mano
         Optional<PdI> yaProcesado =
                 pdiRepository.findByHechoId(nuevoPdI.getHechoId()).stream()
@@ -57,22 +57,26 @@ public class Fachada implements FachadaProcesadorPdI {
                                                 && p.getMomento().equals(nuevoPdI.getMomento())
                                                 && p.getContenido().equals(nuevoPdI.getContenido()))
                         .findFirst();
-
+        System.out.println("LLEGAMOS 3");
         if (yaProcesado.isPresent()) {
             return convertirADTO(yaProcesado.get());
         }
+        System.out.println("LLEGAMOS 4");
 
         nuevoPdI.setId(generadorID.getAndIncrement());
+        System.out.println("LLEGAMOS 7");
         nuevoPdI.setEtiquetas(etiquetar(nuevoPdI.getContenido()));
+        System.out.println("LLEGAMOS 6");
         pdiRepository.save(nuevoPdI);
-
+        System.out.println("LLEGAMOS 5");
         System.out.println(
                 "Se guardó el PdI con ID "
                         + nuevoPdI.getId()
                         + " en hechoId: "
                         + nuevoPdI.getHechoId());
-
+        System.out.println("LLEGAMOS 8");
         PdIDTO pdiDTOAEnviar = convertirADTO(nuevoPdI);
+        System.out.println("LLEGAMOS 9");
         return pdiDTOAEnviar;
     }
 
