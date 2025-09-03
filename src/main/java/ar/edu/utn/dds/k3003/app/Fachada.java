@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class Fachada implements FachadaProcesadorPdI {
-    @SuppressWarnings("unused");
+    
     private FachadaSolicitudes fachadaSolicitudes;
 
     @Getter private PdIRepository pdiRepository;
