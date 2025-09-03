@@ -46,6 +46,7 @@ public class PdIController {
     // POST /pdis
     @PostMapping
     public ResponseEntity<PdIDTO> procesarNuevoPdi(@RequestBody PdIDTO pdi) {
+        System.out.println("alijnaeoñcuanc{pinaOEcuia>c}");
         return ResponseEntity.ok(fachadaProcesadorPdI.procesar(pdi));
     }
 }
