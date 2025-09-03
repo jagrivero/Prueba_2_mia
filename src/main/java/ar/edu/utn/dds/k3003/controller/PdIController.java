@@ -47,6 +47,10 @@ public class PdIController {
     @PostMapping
     public ResponseEntity<PdIDTO> procesarNuevoPdi(@RequestBody PdIDTO pdi) {
         System.out.println("alijnaeoñcuanc{pinaOEcuia>c}");
+        System.out.println("Queremos un idHecho: " + pdi.hechoId());
+        System.out.println("Queremos un descripcion: " + pdi.descripcion());
+        System.out.println("Queremos un lugar: " + pdi.lugar());
+        System.out.println("Queremos un momento: " + pdi.momento());
         return ResponseEntity.ok(fachadaProcesadorPdI.procesar(pdi));
     }
 }
