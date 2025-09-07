@@ -15,7 +15,7 @@ public class JacksonConfig {
     public ObjectMapper objectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         // Tira error en spring por hechoId de DTO
-        mapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
+//        mapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         return mapper;

@@ -37,6 +37,7 @@ public class Fachada implements FachadaProcesadorPdI {
     @Override
     public void setFachadaSolicitudes(FachadaSolicitudes fachadaSolicitudes) {
         this.fachadaSolicitudes = fachadaSolicitudes;
+        System.out.println(this.fachadaSolicitudes.toString());
     }
 
     @Override
